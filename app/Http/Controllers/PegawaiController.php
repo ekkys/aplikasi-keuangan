@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PegawaiController extends Controller
 {
-    // mengambil data dari table pegawai
-    $pegawai = DB::table('pegawai')->get();
+    public function index()
+    {
+        // mengambil data dari table pegawai
+        $pegawais = DB::table('pegawai')->get();
+
+        //menampilkan data pegawai ke view index
+        return view('index', ['pegawais' => $pegawais]);
+    }
 }
